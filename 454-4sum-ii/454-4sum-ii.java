@@ -1,21 +1,22 @@
 class Solution {
-public:
-    
-    int fourSumCount(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3, vector<int>& nums4) {
+    public int fourSumCount(int[] nums1, int[] nums2, int[] nums3, int[] nums4) {
         
-        int count=0;
-        unordered_map<int,int> mp;
+        Map<Integer,Integer> map = new HashMap<>();
+        int ans = 0;
         
-        //Traversing Part 1
-        for (auto &it1: nums1)
-            for (auto &it2:nums2)
-                mp[it1+it2]++; 
+        for(int n1 : nums1){
+            for(int n2 : nums2){
+                map.compute(n1+n2, (k,v)->(v==null)?1:v+1);
+            }
+        }
         
-        // Traversing Part 2
-        for(auto &it3: nums3)
-            for(auto &it4:nums4)
-               if(mp.count(0-it3-it4)) count+=mp[0-it3-it4];
+        for(int n3 : nums3){
+            for(int n4 : nums4){
+                ans += map.getOrDefault(-(n3+n4), 0);
+            }
+        }
         
-        return count;
+        return ans;
+        
     }
-};
+}
