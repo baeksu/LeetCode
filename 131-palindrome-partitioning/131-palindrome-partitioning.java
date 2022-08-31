@@ -3,21 +3,19 @@ import java.util.*;
 class Solution {
     public List<List<String>> partition(String s) {
         List<List<String>> ans = new ArrayList<>();
-        List<String> result = new ArrayList<>();
+        ArrayList<String> result = new ArrayList<>();
         solve(s, 0, result, ans );
         return ans;
-            
     }
     
-    public static void solve(String s, int start, List<String> result, List<List<String>> ans){
+    // ArrayList<Fruit> copyOfFruitList = (ArrayList<Fruit>) fruitList.clone();
+
+    
+    public static void solve(String s, int start, ArrayList<String> result, List<List<String>> ans){
         
         //끝까지 온경우, 이전까지의 substring 들은 모두 팰린드롬이라고 생각
         if(start == s.length()){
-            List<String> tmp = new ArrayList<>();
-            for(String str : result){
-                
-                tmp.add(str);
-            }
+            ArrayList<String> tmp = (ArrayList<String>)result.clone();
             ans.add(tmp);
             return;
         }
