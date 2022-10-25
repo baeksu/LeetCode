@@ -10,12 +10,12 @@ var numberOfBeams = function(bank) {
         [...str].forEach((char)=>{
             if(char == 1) cnt++;
         })
-        if(cnt!=0 && prev == 0){
-            prev = cnt;
-        }else if(cnt!=0){
+        
+        if(cnt){
             ans = ans + (prev*cnt);
-            prev=cnt;
+            prev = cnt;
         }
+
     })
     
     return ans;
